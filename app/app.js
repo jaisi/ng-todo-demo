@@ -45,7 +45,7 @@ app.controller("TodoCtrl", function($scope){
           console.log("you clicked new Item");
           $scope.showListView = false;
       };
-      
+
       $scope.allItem = function(){
         console.log("you clicked all items");
         $scope.showListView = true;
@@ -58,13 +58,5 @@ app.controller("TodoCtrl", function($scope){
         $scope.items.push($scope.newTask);
         $scope.newTask="";
       };
-
-
-
-
-
-
-
-
 
 });
