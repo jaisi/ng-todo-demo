@@ -1,3 +1,5 @@
+"use strict";
+
 var app = angular.module("TodoApp", []);
 
 app.controller("NavCtrl", function($scope){
@@ -56,7 +58,7 @@ app.controller("TodoCtrl", function($scope){
         $scope.newTask.id = $scope.items.length;
         console.log("you added a new item", $scope.newTask);
         $scope.items.push($scope.newTask);
-        $scope.newTask="";
+        $scope.newTask = {};
       };
 
 });
