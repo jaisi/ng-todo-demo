@@ -1,5 +1,5 @@
 $lobster: bisque;
-$red: red;
+$border: red;
 
 body{
 	background-color: $lobster;
@@ -10,5 +10,5 @@ h1{
 }
 
 .main-container {
-  border: 2px dashed $red;
+  border: 2px dashed $border;
 }

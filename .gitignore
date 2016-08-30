@@ -2,3 +2,5 @@
 lib/bower_components
 lib/node_modules
 npm-debug.log
+css/
+lib/.sass-cache
