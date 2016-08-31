@@ -1,44 +1,44 @@
 "use strict";
 
-app.factory("ItemStorage", function(FirebaseURL, $q, $http) {
+app.factory("ItemStorage", (FirebaseURL, $q, $http) => {
 
-  let getItemList = function() {
-    console.log("getItemList called " );
+  let getItemList = () => {
+    console.log("getItemList called with ES6 " );
     let items = [];
-    return $q(function(resolve, reject) {
+    return $q((resolve, reject) => {
       $http.get(`${FirebaseURL}/items.json`)
-      .success(function(itemObject) {
+      .success((itemObject) => {
         let itemCollection = itemObject;
-        Object.keys(itemCollection).forEach(function(key) {
+        Object.keys(itemCollection).forEach((key) => {
           itemCollection[key].id=key;
           items.push(itemCollection[key]);
         });
         resolve(items);
       })
-      .error(function(error) {
+      .error((error) => {
         reject(error);
       });
     });
   };
 
-  let postNewItem = function(newItem) {
-    return $q(function(resolve, reject) {
+  let postNewItem = (newItem) => {
+    return $q((resolve, reject) => {
       $http.post(`${FirebaseURL}/items.json`,
         JSON.stringify(newItem))
-      .success(function(ObjFromFirebase) {
+      .success((ObjFromFirebase) => {
         resolve(ObjFromFirebase);
       })
-      .error(function(error) {
+      .error((error) => {
         reject(error);
       });
     });
   };
 
-  let deleteItem = function(itemId){
+  let deleteItem = (itemId) => {
     console.log("delete in factory");
-    return $q(function(resolve, reject){
+    return $q((resolve, reject) => {
       $http.delete(`${FirebaseURL}/items/${itemId}.json`)
-      .success(function(objectFromFirebase){
+      .success((objectFromFirebase) => {
         resolve(objectFromFirebase);
       });
     });
