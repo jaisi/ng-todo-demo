@@ -3,7 +3,7 @@
 app.factory("ItemStorage", (FirebaseURL, $q, $http) => {
 
   let getItemList = () => {
-    console.log("getItemList called with ES6 " );
+    console.log("getItemList called with ES6");
     let items = [];
     return $q((resolve, reject) => {
       $http.get(`${FirebaseURL}/items.json`)
