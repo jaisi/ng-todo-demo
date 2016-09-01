@@ -1,6 +1,9 @@
 "use strict";
 
-app.controller("NavCtrl", function($scope, SearchTermData) {
+app.controller("NavCtrl", function($scope, SearchTermData, $location) {
+  $scope.isActive = function(viewLocation) {
+    return viewLocation === $location.path();
+  };
   $scope.searchText = SearchTermData;
   $scope.navItems = [
     {
