@@ -6,7 +6,8 @@ app.factory("ItemStorage", (FirebaseURL, $q, $http) => {
     console.log("getItemList called with ES6");
     let items = [];
     return $q((resolve, reject) => {
-      $http.get(`${FirebaseURL}/items.json`)
+      // When hooked up to firebase, use this: `${FirebaseURL}/items.json`
+      $http.get("../../data/itemList.json")
       .success((itemObject) => {
         let itemCollection = itemObject;
         Object.keys(itemCollection).forEach((key) => {
