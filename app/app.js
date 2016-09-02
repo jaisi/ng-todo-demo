@@ -5,7 +5,7 @@ var app = angular.module("TodoApp", ["ngRoute"]) // remember to delete the semi-
 
 app.config(function($routeProvider){
   $routeProvider.
-    when('/items/list',{
+    when('/items/list', {
       templateUrl: 'partials/item-list.html',
       controller: 'ItemListCtrl'
     }).

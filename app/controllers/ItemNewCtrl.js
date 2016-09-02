@@ -13,7 +13,7 @@ app.controller("ItemNewCtrl", function($scope, ItemStorage, $location) {
 
   $scope.addNewItem = function() {
     console.log("Added new item", $scope.newTask);
-    ItemStorage.postNewItem()
+    ItemStorage.postNewItem($scope.newTask)
     .then(function(response) {
       $location.url("/items/list");
     });

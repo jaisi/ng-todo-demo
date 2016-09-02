@@ -7,7 +7,7 @@ app.factory("ItemStorage", (FirebaseURL, $q, $http) => {
     let items = [];
     return $q((resolve, reject) => {
       // When hooked up to firebase, use this: `${FirebaseURL}/items.json`
-      $http.get("../../data/itemList.json")
+      $http.get(`${FirebaseURL}/items.json`)
       .success((itemObject) => {
         let itemCollection = itemObject;
         Object.keys(itemCollection).forEach((key) => {
