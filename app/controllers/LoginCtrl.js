@@ -1,6 +1,6 @@
 "use strict";
 // reinsert AuthFactory when written
-app.controller("LoginCtrl", function($scope, $rootScope, $window, AuthFactory){
+app.controller("LoginCtrl", function($scope, $window, AuthFactory){
 
 	$scope.account = {
 		email: "",
