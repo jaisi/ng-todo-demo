@@ -1,7 +1,8 @@
 "use strict";
 
-app.controller("ItemListCtrl", function($scope, ItemStorage) {
-  console.log("Hello, Item list ctrl");
+app.controller("ItemListCtrl", function($scope, ItemStorage, SearchTermData) {
+  console.log("Hello, Item list ctrl", SearchTermData);
+  $scope.searchText = SearchTermData;
 
   ItemStorage.getItemList()
   .then(function(itemCollection) {

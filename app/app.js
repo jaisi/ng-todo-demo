@@ -5,6 +5,10 @@ var app = angular.module("TodoApp", ["ngRoute"]) // remember to delete the semi-
 
 app.config(($routeProvider) => {
   $routeProvider.
+    when('/', {
+      templateUrl: 'partials/login.html',
+      controller: 'LoginCtrl'
+    }).
     when('/items/list',{
       templateUrl: 'partials/item-list.html',
       controller: 'ItemListCtrl'
@@ -17,7 +21,11 @@ app.config(($routeProvider) => {
       templateUrl: 'partials/item-details.html ',
       controller: 'ItemViewCtrl'
     }).
-    otherwise('/items/list');
+    when('/login', {
+      templateUrl: 'partials/login.html',
+      controller: "LoginCtrl"
+    }).
+    otherwise('/');
 });
 
 app.run(($location, FBCreds) => {
