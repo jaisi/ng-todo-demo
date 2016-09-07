@@ -2,11 +2,11 @@
 
 app.factory("ItemStorage", function(FirebaseURL, $q, $http) {
 
-  let getItemList = function() {
+  let getItemList = function(user) {
     console.log("getItemList called " );
     let items = [];
     return $q(function(resolve, reject) {
-      $http.get(`${FirebaseURL}items.json`)
+      $http.get(`${FirebaseURL}items.json?orderBy="uid"&equalTo="${user}"`)
       .success(function(itemObject) {
         let itemCollection = itemObject;
         Object.keys(itemCollection).forEach(function(key) {

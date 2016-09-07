@@ -4,7 +4,7 @@ app.controller("ItemListCtrl", function($scope, ItemStorage, SearchTermData) {
   console.log("Hello, Item list ctrl", SearchTermData);
   $scope.searchText = SearchTermData;
 
-  ItemStorage.getItemList()
+  ItemStorage.getItemList($scope.$parent.getUser())
   .then(function(itemCollection) {
     $scope.items = itemCollection;
   });

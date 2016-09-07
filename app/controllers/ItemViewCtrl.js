@@ -4,7 +4,7 @@ app.controller("ItemViewCtrl", function($scope, $routeParams, ItemStorage) {
   $scope.items = [];
   console.log($routeParams.itemId);
 
-  ItemStorage.getItemList()
+  ItemStorage.getItemList($scope.$parent.getUser())
   .then(function(itemCollection) {
     $scope.items = itemCollection;
 

@@ -1,6 +1,7 @@
 "use strict";
 
 app.factory("AuthFactory", function($q) {
+  let currentUser = null;
   
   let createUser = function(userObj) {
     console.log("new user", userObj.email, userObj.password );
