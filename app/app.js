@@ -41,6 +41,11 @@ app.config(($routeProvider) => {
     templateUrl: 'partials/item-details.html',
     controller: 'ItemViewCtrl',
     resolve: {isAuth}
+  }).  
+  when('/items/view/:itemId/edit', {
+    templateUrl: 'partials/item-form.html',
+    controller: 'ItemEditCtrl',
+    resolve: {isAuth}
   }).
   otherwise('/');
 });

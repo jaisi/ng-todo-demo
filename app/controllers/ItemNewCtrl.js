@@ -1,6 +1,8 @@
 "use strict";
 
 app.controller("ItemNewCtrl", function($scope, ItemStorage, $location) {
+  $scope.title = "Add a new Task",
+  $scope.btnText = "Save New Task";
   $scope.newTask = {
     assignedTo: "",
     dependencies: "",

@@ -19,7 +19,7 @@ app.controller("NavCtrl", function($scope, $location, SearchTermData, AuthFactor
       showState: "$parent.isLoggedIn"
     },
     {
-      name: "Loginnnnnn",
+      name: "Login",
       url: "#/login",
       showState: "!$parent.isLoggedIn"
     }

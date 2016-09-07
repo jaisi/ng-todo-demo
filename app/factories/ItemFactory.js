@@ -6,7 +6,7 @@ app.factory("ItemStorage", function(FirebaseURL, $q, $http) {
     console.log("getItemList called " );
     let items = [];
     return $q(function(resolve, reject) {
-      $http.get(`${FirebaseURL}/items.json`)
+      $http.get(`${FirebaseURL}items.json`)
       .success(function(itemObject) {
         let itemCollection = itemObject;
         Object.keys(itemCollection).forEach(function(key) {
@@ -21,9 +21,21 @@ app.factory("ItemStorage", function(FirebaseURL, $q, $http) {
     });
   };
 
+  let getSingleItem = (itemId) => {
+    return $q(function(resolve, reject){
+      $http.get(`${FirebaseURL}items/${itemId}.json`)
+      .success(function(itemObject){
+        resolve(itemObject);
+      })
+      .error(function(error){
+        reject(error);
+      });
+    });
+  }
+
   let postNewItem = function(newItem) {
     return $q(function(resolve, reject) {
-      $http.post(`${FirebaseURL}/items.json`,
+      $http.post(`${FirebaseURL}items.json`,
         JSON.stringify(newItem))
       .success(function(ObjFromFirebase) {
         resolve(ObjFromFirebase);
@@ -34,15 +46,28 @@ app.factory("ItemStorage", function(FirebaseURL, $q, $http) {
     });
   };
 
+  let updateItem = function(itemId, editedItem) {
+    return $q(function(resolve, reject) {
+      $http.patch(`${FirebaseURL}items/${itemId}.json`,
+        JSON.stringify(editedItem))
+      .success(function(ObjFromFirebase) {
+        resolve(ObjFromFirebase);
+      })
+      .error(function(error) {
+        reject(error);
+      });
+    });
+  }
+
   let deleteItem = function(itemId){
     console.log("delete in factory");
     return $q(function(resolve, reject){
-      $http.delete(`${FirebaseURL}/items/${itemId}.json`)
+      $http.delete(`${FirebaseURL}items/${itemId}.json`)
       .success(function(objectFromFirebase){
         resolve(objectFromFirebase);
       });
     });
   };
 
-  return {getItemList, postNewItem, deleteItem};
+  return {getItemList, getSingleItem, postNewItem, updateItem, deleteItem};
 });

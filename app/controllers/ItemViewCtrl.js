@@ -12,5 +12,4 @@ app.controller("ItemViewCtrl", function($scope, $routeParams, ItemStorage) {
       return item.id === $routeParams.itemId;
     })[0];
   });
-
 });

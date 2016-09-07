@@ -4,7 +4,7 @@
     <div class="panel-body">
       <div class="col-xs-1"><input type="checkbox" name=""/></div>
       <!-- Make item a link so we can look at it alone -->
-      <div class="col-xs-7"><a ng-href="#/items/{{thingy.id}}">{{thingy.task}}</a></div>
+      <div class="col-xs-7"><a ng-href="#/items/view/{{thingy.id}}">{{thingy.task}}</a></div>
       <div class="col-xs-2">{{thingy.dueDate}}</div>
       <div class="col-xs-1">{{thingy.assignedTo}}</div>            
       <div class="col-xs-1"><button class="btn btn-danger" ng-click="itemDelete(thingy.id)"><i class="fa fa-trash" aria-hidden="true"></i></button></div>
