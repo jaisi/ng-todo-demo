@@ -1,26 +1,22 @@
 "use strict";
 
-app.factory("AuthFactory", function($q) {
-  let currentUser = null;
-  
+app.factory("AuthFactory", function() {
+
   let createUser = function(userObj) {
-    console.log("new user", userObj.email, userObj.password );
     return firebase.auth().createUserWithEmailAndPassword(userObj.email, userObj.password)
       .catch(function(error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // ...
+        let errorCode = error.code;
+        let errorMessage = error.message;
+        //....
       });
   };
 
   let loginUser = function(userObj) {
     return firebase.auth().signInWithEmailAndPassword(userObj.email, userObj.password)
     .catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // ...
+      let errorCode = error.code;
+      let errorMessage = error.message;
+      console.log("error", errorCode, errorMessage );
     });
   };
 
@@ -29,9 +25,19 @@ app.factory("AuthFactory", function($q) {
   };
 
   let isAuthenticated = function() {
-    return (firebase.auth().currentUser) ? true : false;
+    console.log("isAuthenticated called AuthFactory");
+    return new Promise( (resolve, reject) => {
+      console.log("firing onAuthStateChanged");
+      firebase.auth().onAuthStateChanged(function(user) {
+        console.log("onAuthStateChanged finished");
+        if (user) {
+          resolve(true);
+        } else {
+          resolve(false);
+        };
+      });
+    });
   };
 
   return {createUser, loginUser, logoutUser, isAuthenticated};
-
 });
