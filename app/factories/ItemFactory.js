@@ -36,7 +36,8 @@ app.factory("ItemStorage", function(FirebaseURL, $q, $http) {
   let postNewItem = function(newItem) {
     return $q(function(resolve, reject) {
       $http.post(`${FirebaseURL}items.json`,
-        JSON.stringify(newItem))
+        angular.toJson(newItem))
+        // JSON.stringify(newItem))
       .success(function(ObjFromFirebase) {
         resolve(ObjFromFirebase);
       })
@@ -49,7 +50,8 @@ app.factory("ItemStorage", function(FirebaseURL, $q, $http) {
   let updateItem = function(itemId, editedItem) {
     return $q(function(resolve, reject) {
       $http.patch(`${FirebaseURL}items/${itemId}.json`,
-        JSON.stringify(editedItem))
+        angular.toJson(editedItem))
+        // JSON.stringify(editedItem))
       .success(function(ObjFromFirebase) {
         resolve(ObjFromFirebase);
       })

@@ -31,6 +31,7 @@ app.factory("AuthFactory", function() {
       firebase.auth().onAuthStateChanged(function(user) {
         console.log("onAuthStateChanged finished");
         if (user) {
+          console.log("user", user);
           resolve(true);
         } else {
           resolve(false);
