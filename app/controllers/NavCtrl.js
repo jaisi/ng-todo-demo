@@ -1,27 +1,20 @@
 "use strict";
 
-app.controller("NavCtrl", function($scope, $location, SearchTermData, AuthFactory) {
+app.controller("NavCtrl", function($scope, $window, SearchTermData, AuthFactory) {
   $scope.searchText = SearchTermData;
-  $scope.navItems = [
-    {
-      name: "Logout",
-      url: '#/logout',
-      showState: "$parent.isLoggedIn"
-    },
-    {
-      name: "All Items",
-      url: '#/items/list',
-      showState: "$parent.isLoggedIn"
-    },
-    {
-      name: "New Item",
-      url: '#/items/new',
-      showState: "$parent.isLoggedIn"
-    },
-    {
-      name: "Login",
-      url: "#/login",
-      showState: "!$parent.isLoggedIn"
+  $scope.isLoggedIn = false;
+
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      $scope.isLoggedIn = true;
+      console.log("currentUser logged in?", currentUser);
+      console.log("logged in t-f", $scope.isLoggedIn );
+      $scope.$apply();
+    } else {
+      $scope.isLoggedIn = false;
+      console.log("user logged in?", $scope.isLoggedIn);
+      $window.location.href = "#/login";
     }
-  ];
+  });
+
 });

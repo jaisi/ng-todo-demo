@@ -1,6 +1,7 @@
 "use strict";
 
 app.factory("AuthFactory", function() {
+  let currentUser = null;
 
   let createUser = function(userObj) {
     return firebase.auth().createUserWithEmailAndPassword(userObj.email, userObj.password)
@@ -21,6 +22,7 @@ app.factory("AuthFactory", function() {
   };
 
   let logoutUser = function() {
+    console.log("Logging out");
     return firebase.auth().signOut();
   };
 
@@ -32,6 +34,7 @@ app.factory("AuthFactory", function() {
         console.log("onAuthStateChanged finished");
         if (user) {
           console.log("user", user);
+          currentUser = user.uid;
           resolve(true);
         } else {
           resolve(false);
@@ -40,5 +43,7 @@ app.factory("AuthFactory", function() {
     });
   };
 
-  return {createUser, loginUser, logoutUser, isAuthenticated};
+  let getUser = () => currentUser;
+
+  return {createUser, loginUser, logoutUser, isAuthenticated, getUser};
 });

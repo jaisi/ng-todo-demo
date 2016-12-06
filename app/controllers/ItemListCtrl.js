@@ -1,10 +1,10 @@
 "use strict";
 
-app.controller("ItemListCtrl", function($scope, ItemStorage, SearchTermData) {
+app.controller("ItemListCtrl", function($scope, ItemStorage, SearchTermData, AuthFactory) {
   console.log("Hello, Item list ctrl", SearchTermData);
   $scope.searchText = SearchTermData;
 
-  ItemStorage.getItemList($scope.$parent.getUser())
+  ItemStorage.getItemList(AuthFactory.getUser())
   .then(function(itemCollection) {
     $scope.items = itemCollection;
   });

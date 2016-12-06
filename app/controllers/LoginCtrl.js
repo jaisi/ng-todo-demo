@@ -2,6 +2,20 @@
 // reinsert AuthFactory when written
 app.controller("LoginCtrl", function($scope, $window, AuthFactory){
 
+  let logout = function() {
+    console.log("Logout clicked");
+    AuthFactory.logoutUser()
+    .then(function(data) {
+      console.log("logged out?", data );
+      $window.location.url = "#/login";
+    }, function(error) {
+      // An error happened.
+    });
+  };
+
+  if(AuthFactory.isAuthenticated())
+    logout(); 
+
 	$scope.account = {
 		email: "",
 		password: ""
@@ -29,6 +43,7 @@ app.controller("LoginCtrl", function($scope, $window, AuthFactory){
         // $scope.isLoggedIn = true;
         // console.log("logged in, really", $scope.isLoggedIn );
         // $scope.$apply();
+
         $window.location.href = "#/items/list";
       });
   };
@@ -53,6 +68,5 @@ app.controller("LoginCtrl", function($scope, $window, AuthFactory){
 	    // ...
 	  });
 	};
-
 
 });

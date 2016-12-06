@@ -8,13 +8,13 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body ng-app="TodoApp">
-  <div ng-controller="TopCtrl">
+  <!-- <div ng-controller="TopCtrl"> -->
     <!-- remove nav and add to partial. Remember quotes in quotes -->
     <div ng-include="'partials/navbar.html'"></div>
 
     <!-- custom directive example -->
     <!-- <input type="text" ng-model="city" placeholder="Enter a city" /> -->
-    <div weather-widget ng-model="Nashville"></div>
+    <!-- <div weather-widget ng-model="Nashville"></div> -->
     <!-- ******************************************************* -->
 
     <div class="row">
@@ -22,7 +22,7 @@
         <div class="col-xs-12" ng-view></div>
       </div>
     </div>
-  </div>
+  <!-- </div> -->
 
 <!-- third-party scripts -->
 <script type="text/javascript" src="lib/bower_components/jquery/dist/jquery.min.js"></script>
@@ -41,7 +41,7 @@
 <script type="text/javascript" src="app/factories/FilterFactory.js"></script>
 <script type="text/javascript" src="app/factories/AuthFactory.js"></script>
 <!-- controllers -->
-<script type="text/javascript" src="app/controllers/TopCtrl.js"></script>
+<!-- <script type="text/javascript" src="app/controllers/TopCtrl.js"></script> -->
 <script type="text/javascript" src="app/controllers/ItemEditCtrl.js"></script>
 <script type="text/javascript" src="app/controllers/NavCtrl.js"></script>
 <script type="text/javascript" src="app/controllers/LoginCtrl.js"></script>
