@@ -1,10 +1,10 @@
 "use strict";
 
-app.controller("ItemViewCtrl", function($scope, $routeParams, ItemStorage) {
+app.controller("ItemViewCtrl", function($scope, $routeParams, ItemStorage, AuthFactory) {
   $scope.items = [];
   console.log($routeParams.itemId);
 
-  ItemStorage.getItemList($scope.$parent.getUser())
+  ItemStorage.getItemList(AuthFactory.getUser())
   .then(function(itemCollection) {
     $scope.items = itemCollection;
 
