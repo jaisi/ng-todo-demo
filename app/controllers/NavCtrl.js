@@ -7,7 +7,7 @@ app.controller("NavCtrl", function($scope, $window, SearchTermData, AuthFactory)
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       $scope.isLoggedIn = true;
-      console.log("currentUser logged in?", currentUser);
+      console.log("currentUser logged in?", user);
       console.log("logged in t-f", $scope.isLoggedIn );
       $scope.$apply();
     } else {

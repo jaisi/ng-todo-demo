@@ -31,7 +31,7 @@ app.factory("ItemStorage", function(FirebaseURL, $q, $http) {
         reject(error);
       });
     });
-  }
+  };
 
   let postNewItem = function(newItem) {
     return $q(function(resolve, reject) {
@@ -59,7 +59,7 @@ app.factory("ItemStorage", function(FirebaseURL, $q, $http) {
         reject(error);
       });
     });
-  }
+  };
 
   let deleteItem = function(itemId){
     console.log("delete in factory");

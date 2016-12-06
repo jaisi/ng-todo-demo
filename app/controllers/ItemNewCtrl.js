@@ -1,7 +1,7 @@
 "use strict";
 
 app.controller("ItemNewCtrl", function($scope, ItemStorage, $location, AuthFactory) {
-  $scope.title = "Add a new Task",
+  $scope.title = "Add a new Task";
   $scope.btnText = "Save New Task";
   $scope.newTask = {
     assignedTo: "",
