@@ -1,7 +1,7 @@
 "use strict";
 
-var app = angular.module("TodoApp", ["ngRoute"])
-.constant("FirebaseURL", "https://ng-todo-demo-4c81b.firebaseio.com/");
+var app = angular.module("TodoApp", ["ngRoute"]);
+// .constant("FirebaseURL", "https://ng-todo-demo-4c81b.firebaseio.com/");
 
 let isAuth = (AuthFactory) => new Promise( (resolve, reject) => {
   AuthFactory.isAuthenticated()
@@ -57,7 +57,7 @@ app.config(function($routeProvider) {
 app.run( ($location, FBCreds) => {
   let creds = FBCreds;
   let authConfig = {
-    apiKey: creds.key,
+    apiKey: creds.apiKey,
     authDomain: creds.authDomain
   };
   firebase.initializeApp(authConfig);
